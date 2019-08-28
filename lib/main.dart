@@ -93,12 +93,13 @@ Future<Null> _setUpNotifications() async {
 
     _firebaseMessaging.getToken().then((token) {
       print("Firebase Messaging Token: " + token);
-
-      Firestore.instance
-          .collection("insta_users")
-          // TODO: unhandled exception
-          .document(currentUserModel.id)
-          .updateData({"androidNotificationToken": token});
+      if (currentUserModel != null) {
+        Firestore.instance
+            .collection("insta_users")
+            // TODO: unhandled exception
+            .document(currentUserModel.id)
+            .updateData({"androidNotificationToken": token});
+      }
     });
   }
 }

@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'main.dart';
-import 'image_post.dart';
 import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+
 import 'edit_profile_page.dart';
+import 'image_post.dart';
+import 'main.dart';
 import 'models/user.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -152,7 +154,7 @@ class _ProfilePage extends State<ProfilePage>
 
     Container buildFollowButton(
         {String text,
-        Color backgroundcolor,
+        Color backgroundColor,
         Color textColor,
         Color borderColor,
         Function function}) {
@@ -162,14 +164,14 @@ class _ProfilePage extends State<ProfilePage>
             onPressed: function,
             child: Container(
               decoration: BoxDecoration(
-                  color: backgroundcolor,
+                  color: backgroundColor,
                   border: Border.all(color: borderColor),
                   borderRadius: BorderRadius.circular(5.0)),
               alignment: Alignment.center,
               child: Text(text,
-                  style: TextStyle(
-                      color: textColor, fontWeight: FontWeight.bold)),
-              width: 250.0,
+                  style:
+                      TextStyle(color: textColor, fontWeight: FontWeight.bold)),
+              width: 240.0,
               height: 27.0,
             )),
       );
@@ -180,7 +182,7 @@ class _ProfilePage extends State<ProfilePage>
       if (currentUserId == profileId) {
         return buildFollowButton(
           text: "Edit Profile",
-          backgroundcolor: Colors.white,
+          backgroundColor: Colors.white,
           textColor: Colors.black,
           borderColor: Colors.grey,
           function: editProfile,
@@ -191,7 +193,7 @@ class _ProfilePage extends State<ProfilePage>
       if (isFollowing) {
         return buildFollowButton(
           text: "Unfollow",
-          backgroundcolor: Colors.white,
+          backgroundColor: Colors.white,
           textColor: Colors.black,
           borderColor: Colors.grey,
           function: unfollowUser,
@@ -202,7 +204,7 @@ class _ProfilePage extends State<ProfilePage>
       if (!isFollowing) {
         return buildFollowButton(
           text: "Follow",
-          backgroundcolor: Colors.blue,
+          backgroundColor: Colors.blue,
           textColor: Colors.white,
           borderColor: Colors.blue,
           function: followUser,
@@ -211,7 +213,7 @@ class _ProfilePage extends State<ProfilePage>
 
       return buildFollowButton(
           text: "loading...",
-          backgroundcolor: Colors.white,
+          backgroundColor: Colors.white,
           textColor: Colors.black,
           borderColor: Colors.grey);
     }

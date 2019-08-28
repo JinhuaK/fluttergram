@@ -86,6 +86,7 @@ class _Feed extends State<Feed> with AutomaticKeepAliveClientMixin<Feed> {
         'https://us-central1-fluttergram-sample.cloudfunctions.net/getFeed?uid=' +
             userId;
     var httpClient = HttpClient();
+    httpClient.connectionTimeout = Duration(seconds: 60);
 
     List<ImagePost> listOfPosts;
     String result;
